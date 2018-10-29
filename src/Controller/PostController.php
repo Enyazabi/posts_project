@@ -16,4 +16,12 @@ class PostController extends AbstractController
             'post' => $postRepository->findAll(),
         ]);
     }
+
+    public function createPost(){
+
+    }
+
+    public function deletePost(){
+
+    }
 }
