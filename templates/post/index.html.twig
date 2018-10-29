@@ -3,7 +3,13 @@
 {% block title %}Hello !{% endblock %}
 
 {% block body %}
-{% for p in post %}
+
+    {{ form_start(postForm)}}
+    {{ form_widget(postForm) }}
+    <button type="submit">create</button>
+    {{ form_end(postForm) }}
+
+    {% for p in post %}
     <p>
         {{ p.title }}
     </p>
@@ -15,11 +21,12 @@
     <p>
         {{ p.autor }}
     </p>
-<form action="/post/delete/{p.id}">
+<form action="/post/delete/{{p.id}}">
     <button type="submit">delete</button>
 </form>
     <hr>
 
    {% endfor %}
+
 
 {% endblock %}
