@@ -4,12 +4,17 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\{PostRepository};
 
 class PostController extends AbstractController
 {
     /**
      * @Route("/post", name="post")
+     * @param PostRepository $postRepository
+     * @return \Symfony\Component\HttpFoundation\Response
      */
+
+
     public function index(PostRepository $postRepository)
     {
         return $this->render('post/index.html.twig', [
@@ -17,11 +22,22 @@ class PostController extends AbstractController
         ]);
     }
 
-    public function createPost(){
+
+    public function createPost($postTitle)
+    {
 
     }
-
-    public function deletePost(){
-
+    /**
+     * @Route("/post/delete/{id}", name="deletePost")
+     */
+    public function deletePost(PostRepository $postRepository, $id)
+    {
+        $post=$postRepository->findOneBy([
+            'id'=>$id,
+        ]);
+        $em=$this->getDoctrine()->getManager();
+        $em->remove($post);
+        $em->flush();
+        return $this->redirectToRoute('post');
     }
 }
