@@ -19,15 +19,15 @@ class PostController extends AbstractController
 
     public function index(PostRepository $postRepository)
     {
-        $postForm=$this->createForm(PostType::class);
+        $postForm = $this->createForm(PostType::class);
         return $this->render('post/index.html.twig', [
             'post' => $postRepository->findAll(),
-            'postForm'->$postForm,
+            'postForm'=>$postForm->createView(),
         ]);
     }
 
 
-    public function createPost()
+    /*public function createPost()
     {
         $post = new Post();
         $post->setPost('Write a blog post');

@@ -15,6 +15,7 @@ class PostType extends AbstractType
             ->add('text')
             ->add('title')
             ->add('autor')
+            ->getForm();
         ;
     }
     public function configureOptions(OptionsResolver $resolver)
