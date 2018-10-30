@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Post;
@@ -17,11 +17,10 @@ class PostController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      */
 
-
     public function index(PostRepository $postRepository)
     {
         $postForm = $this->createForm(PostType::class);
-        return $this->render('post/index.html.twig', [
+        return $this->render('post/register.html.twig', [
             'post' => $postRepository->findAll(),
             'postForm'=>$postForm->createView(),
         ]);
@@ -41,7 +40,8 @@ class PostController extends AbstractController
         $postForm = $this->createForm(PostType::class, $post);
 
         $postForm->handleRequest($request);
-        if ($postForm->isSubmitted() && $postForm->isValid()) {
+        if ($postForm->isSubmitted() && $postForm->isValid())
+        {
             $post = $postForm->getData();
             $post->setAddTime(new \DateTime());
             $em=$this->getDoctrine()->getManager();

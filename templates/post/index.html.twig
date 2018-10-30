@@ -3,33 +3,40 @@
 {% block title %}Hello !{% endblock %}
 
 {% block body %}
+
 <div class="container">
-    {{ form_start(postForm, { 'action': path('createPost'), 'method': 'POST'
-    })}}
+    <div class="row">
+    <div class="col s6 offset-s3">
+    {{ form_start(postForm, { 'action': path('createPost'), 'method': 'POST'})
+    }}
 
-    {{ form_widget(postForm) }}
-    <button type="submit">create</button>
+    {{ form_row(postForm.title) }}
+    {{ form_row(postForm.text) }}
+    {{ form_row(postForm.autor) }}
+    <button type="submit" class="btn ">create</button>
     {{ form_end(postForm) }}
-
-
+    </div>
+    </div>
+    <ul>
     {% for p in post %}
-    <p>
-        {{ p.title }}
-    </p>
+    <li>
+       <b>{{ p.title }}</b>
+    </li>
 
-    <p>
-        {{ p.text }}
-    </p>
+        <li>
+            <b> {{ p.text }}</b>
+        </li>
+        <li>
+            <b>{{ p.autor }}</b>
+        </li>
 
-    <p>
-        {{ p.autor }}
-    </p>
 <form action="/post/{{p.id}}" >
-    <button type="submit">delete</button>
+    <button type="submit" class="btn-small cyan ">delete</button>
 </form>
     <hr>
 
    {% endfor %}
+    </ul>
 </div>
 
 {% endblock %}

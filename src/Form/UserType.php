@@ -2,27 +2,32 @@
 
 namespace App\Form;
 
-use App\Entity\Post;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PostType extends AbstractType
+class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text',null, array(
+            ->add('name',null, array(
                 'attr'   =>  [
                     'class'   => 'validate'
                 ]
             ))
-            ->add('title',null, array(
+            ->add('firstName',null, array(
                 'attr'   =>  [
                     'class'   => 'validate'
                 ]
             ))
-            ->add('autor',null, array(
+            ->add('email',null, array(
+                'attr'   =>  [
+                    'class'   => 'validate'
+                ]
+            ))
+            ->add('password',null, array(
                 'attr'   =>  [
                     'class'   => 'validate'
                 ]
@@ -33,8 +38,7 @@ class PostType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Post::class,
+            'data_class' => User::class,
         ]);
     }
 }
-

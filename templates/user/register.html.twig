@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    {{ form_start(userForm, { 'action': path('user'), 'method': 'POST'})
+    }}
+
+    {{ form_row(userForm.name) }}
+    {{ form_row(userForm.firstName) }}
+    {{ form_row(userForm.email) }}
+    {{ form_row(userForm.password) }}
+    <button type="submit" class="btn ">sign up</button>
+    {{ form_end(userForm) }}
+{% endblock %}
