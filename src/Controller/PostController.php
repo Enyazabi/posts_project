@@ -5,13 +5,14 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Form\PostType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\{PostRepository};
 
 class PostController extends AbstractController
 {
     /**
-     * @Route("/post", name="post")
+     * @Route("/post", name="post", methods="GET")
      * @param PostRepository $postRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -27,24 +28,34 @@ class PostController extends AbstractController
     }
 
 
-    /*public function createPost()
-    {
-        $post = new Post();
-        $post->setPost('Write a blog post');
-        $post->setDueDate(new \DateTime('tomorrow'));
-
-        $form = $this->createFormBuilder($task)
-            ->add('task', TextType::class)
-            ->add('dueDate', DateType::class)
-            ->add('save', SubmitType::class, array('label' => 'Create Task'))
-            ->getForm();
-
-        return $this->render('default/new.html.twig', array(
-            'form' => $form->createView(),
-        ));
-    }
     /**
-     * @Route("/post/delete/{id}", name="deletePost")
+     * @Route("/post", name="createPost", methods="POST")
+     * @param $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+
+    public function createPost(Request $request)
+    {
+
+        $post = new Post();
+        $postForm = $this->createForm(PostType::class, $post);
+
+        $postForm->handleRequest($request);
+        if ($postForm->isSubmitted() && $postForm->isValid()) {
+            $post = $postForm->getData();
+            $post->setAddTime(new \DateTime());
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+        }
+        return $this->redirectToRoute('post');
+    }
+
+    /**
+     * @Route("/post/{id}", name="deletePost")
+     * @param PostRepository $postRepository
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deletePost(PostRepository $postRepository, $id)
     {
