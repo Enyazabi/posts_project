@@ -50,7 +50,22 @@ class UserController extends AbstractController
         ]);
     }
 
-
+    /**
+     * @Route("/userlist/{id}", name="deleteUser"
+     * @param UserRepository $userRepository
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function deleteUser(UserRepository $userRepository, $id)
+    {
+        $user=$userRepository->findOneBy([
+            'id'=>$id,
+        ]);
+        $em=$this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
+        return $this->redirectToRoute('userlist');
+    }
 
 
 }
