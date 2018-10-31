@@ -13,26 +13,4 @@
     <button type="submit" class="btn ">sign up</button>
     {{ form_end(userForm) }}
 
-<ul>
-    {% for u in user %}
-        <li>
-            <b>{{ u.name }}</b>
-        </li>
-
-        <li>
-            <b> {{ u.firstName }}</b>
-        </li>
-
-        <li>
-            <b>{{ u.email }}</b>
-        </li>
-
-
-        <form action="/user/{{u.id}}" >
-            <button type="submit" class="btn-small cyan ">delete</button>
-        </form>
-        <hr>
-
-    {% endfor %}
-</ul>
 {% endblock %}

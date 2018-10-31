@@ -37,14 +37,14 @@ class UserController extends AbstractController
 
 
     /**
-     * @Route("/user", name="user", methods="GET")
+     * @Route("/userlist", name="userlist", methods="GET")
      * @param UserRepository $userRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function userList(UserRepository $userRepository)
     {
         $userForm = $this->createForm(UserType::class);
-        return $this->render('user/register.html.twig', [
+        return $this->render('user/userlist.html.twig', [
             'user' => $userRepository->findAll(),
             'userForm'=>$userForm->createView(),
         ]);
