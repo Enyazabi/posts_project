@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello !{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
 
@@ -13,27 +13,28 @@
     {{ form_row(postForm.title) }}
     {{ form_row(postForm.text) }}
     {{ form_row(postForm.autor) }}
-    <button type="submit" class="btn ">create</button>
+    <button type="submit" class="btn ">Create</button>
     {{ form_end(postForm) }}
     </div>
     </div>
 
     <ul>
     {% for p in post %}
-    <li>
-       <b>{{ p.title }}</b>
-    </li>
+        <li>
+            <b>{{ p.title }}</b>
+        </li>
 
         <li>
             <b> {{ p.text }}</b>
         </li>
+
         <li>
             <b>{{ p.autor }}</b>
         </li>
 
-<form action="/post/{{p.id}}" >
-    <button type="submit" class="btn-small cyan ">delete</button>
-</form>
+    <form action="/post/{{p.id}}" >
+        <button type="submit" class="btn-small">Delete</button>
+    </form>
     <hr>
 
    {% endfor %}

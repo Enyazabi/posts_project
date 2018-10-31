@@ -3,7 +3,8 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-
+<div class="container">
+    <div class="row">
     <ul>
         {% for u in user %}
             <li>
@@ -18,11 +19,13 @@
                 <b>{{ u.email }}</b>
             </li>
 
-            <form action="/user/{{u.id}}" >
-                <button type="submit" class="btn-small ">delete</button>
+            <form action="/userlist/{{u.id}}" >
+                <button type="submit" class="btn-small ">Delete</button>
             </form>
             <hr>
 
         {% endfor %}
     </ul>
+    </div>
+</div>
 {% endblock %}

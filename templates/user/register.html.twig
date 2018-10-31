@@ -3,6 +3,9 @@
 {% block title %}{% endblock %}
 
 {% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col s6 offset-s3">
     {{ form_start(userForm, { 'action': path('user'), 'method': 'POST'})
     }}
 
@@ -10,7 +13,9 @@
     {{ form_row(userForm.firstName) }}
     {{ form_row(userForm.email) }}
     {{ form_row(userForm.password) }}
-    <button type="submit" class="btn ">sign up</button>
+    <button type="submit" class="btn ">Sign up</button>
     {{ form_end(userForm) }}
-
+            </div>
+        </div>
+    </div>
 {% endblock %}
