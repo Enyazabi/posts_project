@@ -12,7 +12,7 @@ use App\Repository\{PostRepository};
 class PostController extends AbstractController
 {
     /**
-     * @Route("/post", name="post", methods="GET")
+     * @Route("/postlist", name="postlist", methods="GET")
      * @param PostRepository $postRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -20,7 +20,7 @@ class PostController extends AbstractController
     public function index(PostRepository $postRepository)
     {
         $postForm = $this->createForm(PostType::class);
-        return $this->render('post/index.html.twig', [
+        return $this->render('post/postlist.html.twig', [
             'post' => $postRepository->findAll(),
             'postForm'=>$postForm->createView(),
         ]);
@@ -52,7 +52,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/post/{id}", name="deletePost")
+     * @Route("/postlist/{id}", name="deletePost")
      * @param PostRepository $postRepository
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -65,6 +65,6 @@ class PostController extends AbstractController
         $em=$this->getDoctrine()->getManager();
         $em->remove($post);
         $em->flush();
-        return $this->redirectToRoute('post');
+        return $this->redirectToRoute('postlist');
     }
 }
