@@ -28,8 +28,6 @@ class UserController extends AbstractController
            $em->flush();
         }
 
-
-
         return $this->render('user/register.html.twig', [
             'userForm' => $userForm->createView(),
         ]);

@@ -18,27 +18,7 @@
     </div>
     </div>
 
-    <ul>
-    {% for p in post %}
-        <li>
-            <b>{{ p.title }}</b>
-        </li>
 
-        <li>
-            <b> {{ p.text }}</b>
-        </li>
-
-        <li>
-            <b>{{ p.autor }}</b>
-        </li>
-
-    <form action="/post/{{p.id}}" >
-        <button type="submit" class="btn-small">Delete</button>
-    </form>
-    <hr>
-
-   {% endfor %}
-    </ul>
 </div>
 
 {% endblock %}

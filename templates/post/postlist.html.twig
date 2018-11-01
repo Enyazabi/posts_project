@@ -8,7 +8,7 @@
         <ul>
             {% for p in post %}
                 <li>
-                    <b>{{ p.title }}</b>
+                    <h5><b>{{ p.title }}</b></h5>
                 </li>
 
                 <li>
@@ -16,7 +16,7 @@
                 </li>
 
                 <li>
-                    <b>{{ p.autor }}</b>
+                    <h6><b>{{ p.autor }}</b></h6>
                 </li>
 
                 <form action="/post/{{p.id}}" >

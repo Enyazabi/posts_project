@@ -49,6 +49,7 @@ class PostController extends AbstractController
             $em->flush();
         }
         return $this->redirectToRoute('post');
+
     }
 
     /**
