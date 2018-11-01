@@ -28,9 +28,9 @@ class PostController extends AbstractController
 
 
     /**
-     * @Route("/post", name="createPost", methods="POST")
+     * @Route("/post", name="createPost")
      * @param $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\Response
      */
 
     public function createPost(Request $request)
@@ -48,7 +48,9 @@ class PostController extends AbstractController
             $em->persist($post);
             $em->flush();
         }
-        return $this->redirectToRoute('post');
+        return $this->render('post/index.html.twig', [
+            'postForm' => $postForm->createView(),
+        ]);
 
     }
 
