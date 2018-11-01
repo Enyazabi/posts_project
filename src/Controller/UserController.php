@@ -51,7 +51,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/userlist/{id}", name="deleteUser"
+     * @Route("/userlist/{id}", name="deleteUser")
      * @param UserRepository $userRepository
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
