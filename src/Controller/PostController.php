@@ -48,7 +48,7 @@ class PostController extends AbstractController
             $em->persist($post);
             $em->flush();
         }
-        return $this->render('post/index.html.twig', [
+        return $this->render('post/login.html.twig', [
             'postForm' => $postForm->createView(),
         ]);
 

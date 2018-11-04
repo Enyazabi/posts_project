@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Hello</h1>
+
+    <form action="{{ path ('login') }}" method="POST">
+
+        <input type="text" name="_username" value="{{ last_username }}" placeholder="Username...">
+        <input type="password" name="_password">
+        <button type="submit">Login</button>
+
+    </form>
+</div>
+{% endblock %}
