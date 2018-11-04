@@ -3,9 +3,15 @@
 {% block title %}{% endblock %}
 
 {% block body %}
+    <style>
+        .error {color:red}
+    </style>
 
 <div class="example-wrapper">
-    <h1>Hello</h1>
+    <h1>Login</h1>
+    {% if error %}
+        <span class="error">{{ error.messageKey }}</span>
+    {% endif %}
 
     <form action="{{ path ('login') }}" method="POST">
 
