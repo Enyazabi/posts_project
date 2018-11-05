@@ -3,11 +3,15 @@
 {% block title %}{% endblock %}
 
 {% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col s6 offset-s3">
     <style>
         .error {color:red}
     </style>
 
 <div class="example-wrapper">
+    <a href="{{ path('logout') }}">Logout</a>
     <h1>Login</h1>
     {% if error %}
         <span class="error">{{ error.messageKey }}</span>
@@ -21,4 +25,7 @@
 
     </form>
 </div>
+    </div>
+    </div>
+    </div>
 {% endblock %}
