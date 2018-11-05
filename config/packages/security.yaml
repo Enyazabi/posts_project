@@ -26,5 +26,13 @@ security:
 
 
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/login, roles: ROLE_ADMIN }
+         - { path: ^/userlist, roles: ROLE_ADMIN }
+         - { path: ^/register, roles: ROLE_ADMIN }
+         - { path: ^/postlist, roles: ROLE_ADMIN }
+         - { path: ^/index, roles: ROLE_ADMIN }
+
+         - { path: ^/login, roles: ROLE_USER }
+         - { path: ^/register, roles: ROLE_USER }
+         - { path: ^/postlist, roles: ROLE_USER }
+         - { path: ^/index, roles: ROLE_USER }
