@@ -15,7 +15,7 @@ class SecurityController extends AbstractController
 
 
     /**
-     * @Route("/user", name="user")
+     * @Route("/register", name="register")
      */
     public function register(Request $request)
     {
@@ -26,6 +26,7 @@ class SecurityController extends AbstractController
         if ($userForm->isSubmitted() && $userForm->isValid())
         {
             $user = $userForm->getData();
+            $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();

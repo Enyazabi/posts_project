@@ -17,7 +17,7 @@ class PostController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      */
 
-    public function index(PostRepository $postRepository)
+    public function showPostList(PostRepository $postRepository)
     {
         $postForm = $this->createForm(PostType::class);
         return $this->render('post/postlist.html.twig', [

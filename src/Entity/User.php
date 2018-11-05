@@ -106,6 +106,13 @@ class User implements UserInterface
      */
     public function getRoles()
     {
+        if($this->name === 'admin') {
+
+            return [
+                'ROLE_ADMIN'
+            ];
+        }
+
         return [
             'ROLE_USER'
         ];

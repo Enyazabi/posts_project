@@ -6,7 +6,7 @@ security:
         my_provider:
             entity:
                 class: App\Entity\User
-                property: username
+                property: name
         in_memory: { memory: ~ }
     firewalls:
         dev:
@@ -26,13 +26,11 @@ security:
 
 
     access_control:
-         - { path: ^/login, roles: ROLE_ADMIN }
-         - { path: ^/userlist, roles: ROLE_ADMIN }
-         - { path: ^/register, roles: ROLE_ADMIN }
-         - { path: ^/postlist, roles: ROLE_ADMIN }
-         - { path: ^/index, roles: ROLE_ADMIN }
 
-         - { path: ^/login, roles: ROLE_USER }
-         - { path: ^/register, roles: ROLE_USER }
-         - { path: ^/postlist, roles: ROLE_USER }
-         - { path: ^/index, roles: ROLE_USER }
+    - { path: ^/userlist, roles: ROLE_ADMIN }
+
+    - { path: ^/postlist, roles: ROLE_USER }
+    #- { path: ^/createPost, roles: ROLE_USER }
+
+    #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    #- { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
